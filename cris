@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe6e6; /* Soft pink background */
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .gif-container img {
+            width: 250px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #888;
+            color: white;
+            position: absolute; /* Essential for the jumping effect */
+        }
+
+        .celebrate {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <div class="gif-container">
+            <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYyNm50Zmd4ZW5ueWd4eGZ4ZW5ueWd4ZW5ueWd4ZW5ueWd4ZW5ueSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Puppy Eyes">
+        </div>
+        <h1 id="questionText">Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="celebrate()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            
+            // Calculate random positions within the visible window
+            // Subtracting 100 to keep the button from going off-screen
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            const gif = document.getElementById('mainGif');
+            const text = document.getElementById('questionText');
+            const buttons = document.querySelector('.buttons');
+
+            // Update Content
+            text.innerHTML = "Yay! Best Valentine ever! ❤️";
+            gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmYyY3F6NHR6dzF6dzF6dzF6dzF6dzF6dzF6dzF6dzF6dzF6dzF6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l41lI4bYippJV8bXG/giphy.gif"; // Celebration GIF
+            
+            // Hide the buttons
+            buttons.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
